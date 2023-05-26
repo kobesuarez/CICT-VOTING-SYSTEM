@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2022 at 11:04 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 27, 2023 at 06:10 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,25 +30,32 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `adminname` varchar(50) NOT NULL,
   `adminpass` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminname`, `adminpass`) VALUES
+('test', 'test');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_acc`
+-- Table structure for table `adminacc`
 --
 
-CREATE TABLE `admin_acc` (
-  `adminuser` varchar(50) NOT NULL,
+CREATE TABLE `adminacc` (
+  `adminname` varchar(50) NOT NULL,
   `adminpass` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin_acc`
+-- Dumping data for table `adminacc`
 --
 
-INSERT INTO `admin_acc` (`adminuser`, `adminpass`) VALUES
-('eoitewircmrcle', 'aweithoerngrlngt');
+INSERT INTO `adminacc` (`adminname`, `adminpass`) VALUES
+('test', 'test');
 
 -- --------------------------------------------------------
 
@@ -61,7 +68,7 @@ CREATE TABLE `audi` (
   `audi_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -78,7 +85,14 @@ CREATE TABLE `candidate` (
   `candidateposition` varchar(50) NOT NULL,
   `candidatepartylist` varchar(50) NOT NULL,
   `candidatepicture` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `candidate`
+--
+
+INSERT INTO `candidate` (`candidatename`, `candidatestudentnumber`, `candidateage`, `candidategender`, `candidatecourse`, `candidateposition`, `candidatepartylist`, `candidatepicture`) VALUES
+('Joi I. Mijares', '20-01248', '21', 'Female', 'Bacherlor of Science in Computer Science', 'President', 'C2020', '20-01248.jpg');
 
 -- --------------------------------------------------------
 
@@ -96,7 +110,7 @@ CREATE TABLE `current` (
   `audi` varchar(50) NOT NULL,
   `piom` varchar(50) NOT NULL,
   `piof` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `current`
@@ -116,7 +130,7 @@ CREATE TABLE `depsec` (
   `depsec_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -129,7 +143,7 @@ CREATE TABLE `gensec` (
   `gensec_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -139,7 +153,14 @@ CREATE TABLE `gensec` (
 
 CREATE TABLE `listpartylist` (
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `listpartylist`
+--
+
+INSERT INTO `listpartylist` (`partylist`) VALUES
+('C2020');
 
 -- --------------------------------------------------------
 
@@ -152,7 +173,7 @@ CREATE TABLE `piof` (
   `piof_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -165,7 +186,7 @@ CREATE TABLE `piom` (
   `piom_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -178,7 +199,31 @@ CREATE TABLE `president` (
   `pres_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `president`
+--
+
+INSERT INTO `president` (`pres_no`, `pres_name`, `votes`, `partylist`) VALUES
+('20-01248', 'Joi I. Mijares', 0, 'C2020');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setsched`
+--
+
+CREATE TABLE `setsched` (
+  `deadline` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `setsched`
+--
+
+INSERT INTO `setsched` (`deadline`) VALUES
+('2023-05-26');
 
 -- --------------------------------------------------------
 
@@ -190,19 +235,19 @@ CREATE TABLE `studentlist` (
   `studentname` varchar(50) NOT NULL,
   `studentnumber` varchar(11) NOT NULL,
   `studentemail` varchar(50) NOT NULL,
+  `studentcourse` varchar(50) NOT NULL,
   `studentyear` varchar(10) NOT NULL,
   `studentsection` varchar(5) NOT NULL,
   `studentcontactnumber` varchar(13) NOT NULL,
   `studentpassword` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `studentlist`
 --
 
-INSERT INTO `studentlist` (`studentname`, `studentnumber`, `studentemail`, `studentyear`, `studentsection`, `studentcontactnumber`, `studentpassword`) VALUES
-('Kobe Satur Suarez', '20-01421', 'kobe.suarez18@gmail.com', '4th Year', 'C2020', '09998620864', 'kobekobe'),
-('Kobe Satur Suarez', '20-01428', 'kobe.suarez18@gmail.com', '1st Year', 'C2020', '09998620864', 'kboe');
+INSERT INTO `studentlist` (`studentname`, `studentnumber`, `studentemail`, `studentcourse`, `studentyear`, `studentsection`, `studentcontactnumber`, `studentpassword`) VALUES
+('Kobe Suarez', '20-01428', 'cuterakker26@gmail.com', 'Bachelor of Science in Computer Science', '3rd Year', 'C2020', '09998620864', 'fiAzOrfJX8');
 
 -- --------------------------------------------------------
 
@@ -221,16 +266,15 @@ CREATE TABLE `studentvote` (
   `votedaudi` varchar(11) NOT NULL,
   `votedpiom` varchar(11) NOT NULL,
   `votedpiof` varchar(11) NOT NULL,
-  `vstatus` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `vstatus` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `studentvote`
 --
 
 INSERT INTO `studentvote` (`sno`, `votedpres`, `votedvprese`, `votedvpresi`, `votedgs`, `votedds`, `votedtrea`, `votedaudi`, `votedpiom`, `votedpiof`, `vstatus`) VALUES
-('20-01421', '1', '0', '1', '0', '0', '0', '0', '0', '0', 'Not Voted'),
-('20-01428', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Voted');
+('20-01428', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Not Voted');
 
 -- --------------------------------------------------------
 
@@ -258,23 +302,7 @@ CREATE TABLE `totalvotestracker` (
   `piof` varchar(50) DEFAULT NULL,
   `piof_totalvote` int(10) DEFAULT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `totalvotestracker`
---
-
-INSERT INTO `totalvotestracker` (`pres`, `pres_totalvote`, `vpresi`, `vpresi_totalvote`, `vprese`, `vprese_totalvote`, `gensec`, `gensec_totalvote`, `depsec`, `depsec_totalvote`, `trea`, `trea_totalvote`, `audi`, `audi_totalvote`, `piom`, `piom_totalvote`, `piof`, `piof_totalvote`, `partylist`) VALUES
-(NULL, 0, NULL, 0, NULL, 0, NULL, 0, NULL, 0, NULL, 0, NULL, 0, NULL, 0, NULL, 0, ''),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gay'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'J-line'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Leader'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Maknae'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'No Jam Bros'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Shiba'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'The Alliance'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Twice'),
-(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Unnie');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -287,14 +315,7 @@ CREATE TABLE `trea` (
   `trea_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `trea`
---
-
-INSERT INTO `trea` (`trea_no`, `trea_name`, `votes`, `partylist`) VALUES
-('20-00030', 'Dahyun W. Kim', 1, 'Maknae');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -307,14 +328,7 @@ CREATE TABLE `vprese` (
   `vprese_name` varchar(50) NOT NULL,
   `votes` int(5) NOT NULL,
   `partylist` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `vprese`
---
-
-INSERT INTO `vprese` (`vprese_no`, `vprese_name`, `votes`, `partylist`) VALUES
-('20-00026', 'Nayeon M. Im', 1, 'Unnie');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -327,14 +341,7 @@ CREATE TABLE `vpresi` (
   `vpresi_name` varchar(50) NOT NULL,
   `votes` int(11) NOT NULL,
   `partylist` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `vpresi`
---
-
-INSERT INTO `vpresi` (`vpresi_no`, `vpresi_name`, `votes`, `partylist`) VALUES
-('20-00001', 'Chaeyoung M. Son', 4, 'No Jam Bros');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -346,6 +353,12 @@ INSERT INTO `vpresi` (`vpresi_no`, `vpresi_name`, `votes`, `partylist`) VALUES
 ALTER TABLE `audi`
   ADD UNIQUE KEY `partylist` (`partylist`),
   ADD UNIQUE KEY `audi_no` (`audi_no`);
+
+--
+-- Indexes for table `candidate`
+--
+ALTER TABLE `candidate`
+  ADD UNIQUE KEY `candidatestudentnumber` (`candidatestudentnumber`);
 
 --
 -- Indexes for table `depsec`
@@ -360,12 +373,6 @@ ALTER TABLE `depsec`
 ALTER TABLE `gensec`
   ADD UNIQUE KEY `partylist` (`partylist`),
   ADD UNIQUE KEY `gensec_no` (`gensec_no`);
-
---
--- Indexes for table `listpartylist`
---
-ALTER TABLE `listpartylist`
-  ADD UNIQUE KEY `partylist` (`partylist`);
 
 --
 -- Indexes for table `piof`
@@ -387,6 +394,18 @@ ALTER TABLE `piom`
 ALTER TABLE `president`
   ADD UNIQUE KEY `partylist` (`partylist`),
   ADD UNIQUE KEY `pres_no` (`pres_no`);
+
+--
+-- Indexes for table `studentlist`
+--
+ALTER TABLE `studentlist`
+  ADD UNIQUE KEY `studentnumber` (`studentnumber`);
+
+--
+-- Indexes for table `studentvote`
+--
+ALTER TABLE `studentvote`
+  ADD KEY `studentnumber` (`sno`);
 
 --
 -- Indexes for table `totalvotestracker`
